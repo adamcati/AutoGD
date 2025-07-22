@@ -1,0 +1,39 @@
+/* markup.css */
+#markup-app {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+}
+#markup-canvas {
+    background: #f8f9fa;
+    border: 1px solid #ccc;
+    display: block;
+    margin: 0 auto;
+    cursor: crosshair;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+#canvas-section .btn {
+    margin-right: 8px;
+}
+#canvas-section {
+    text-align: center;
+}
+.rect-trash {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    cursor: pointer;
+    z-index: 10;
+    border: 1px solid #ccc;
+    transition: background 0.2s;
+}
+.rect-trash:hover {
+    background: #f8d7da;
+    border-color: #dc3545;
+} 

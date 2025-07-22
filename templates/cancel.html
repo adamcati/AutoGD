@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    <h4 class="mb-0">Payment Cancelled</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-times-circle text-warning" style="font-size: 4rem;"></i>
+                    </div>
+                    <h5 class="card-title text-center">Payment was cancelled</h5>
+                    <p class="card-text text-center">
+                        Your payment was cancelled. No charges were made to your account.
+                    </p>
+                    <div class="text-center mt-4">
+                        <a href="{{ url_for('pricing') }}" class="btn btn-primary">
+                            Return to Pricing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">Welcome, {{ current_user.email }}</h1>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Your Subscription</h4>
+            </div>
+            <div class="card-body">
+                <p>Current Plan: {{ current_user.subscription_status.title() }}</p>
+                {% if current_user.subscription_status == 'free' %}
+                    <h5>Upgrade your plan:</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Basic Plan</h5>
+                                    <p class="card-text">Perfect for getting started</p>
+                                    <a href="{{ url_for('create_checkout_session', tier='basic') }}" class="btn btn-primary">Upgrade to Basic</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Plus Plan</h5>
+                                    <p class="card-text">For growing needs</p>
+                                    <a href="{{ url_for('create_checkout_session', tier='plus') }}" class="btn btn-primary">Upgrade to Plus</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Premium Plan</h5>
+                                    <p class="card-text">Full featured access</p>
+                                    <a href="{{ url_for('create_checkout_session', tier='premium') }}" class="btn btn-primary">Upgrade to Premium</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                  <div>
+                    <h1>Upload Image</h1>
+                    <div id="markup-app">
+                        <div id="upload-section">
+                            <form id="image-upload-form">
+                                <input type="file" id="image-input" name="file" accept="image/*" required>
+                                <button type="submit" class="btn btn-primary">Upload</button>
+                            </form>
+                        </div>
+                        <div id="canvas-section" style="display:none; margin-top:20px;">
+                            <div style="border:1px solid #ccc; position:relative; width:100%; max-width:900px; height:600px; overflow:hidden;">
+                                <canvas id="markup-canvas" width="900" height="600" style="background:#f8f9fa; cursor:crosshair;"></canvas>
+                            </div>
+                            <div class="mt-2">
+                                <button id="reset-btn" class="btn btn-secondary btn-sm">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                    <link rel="stylesheet" href="{{ url_for('static', filename='css/markup.css') }}">
+                    <script src="{{ url_for('static', filename='js/markup.js') }}"></script>
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
